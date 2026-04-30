@@ -537,6 +537,10 @@
     text-align: center;
   }
 
+  .hero-carousel-indicators {
+    display: none;
+  }
+
   .section {
     padding: 4rem 0;
   }

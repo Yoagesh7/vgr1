@@ -234,31 +234,31 @@ const Home = ({ addToCart }) => {
               <div className="curation-image">
                 <img src="/assets/category_bridal_1777555751544.png" alt="Niraa Deepavali Edit" />
               </div>
-              <Link to="/shop" className="curation-link">Niraa - Deepavali 2025 Edit <span className="arrow">&gt;</span></Link>
+              <Link to="/curations" className="curation-link">Niraa - Deepavali 2025 Edit <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
                 <img src="/assets/category_banarasi_1777555774066.png" alt="Swara Edition 3" />
               </div>
-              <Link to="/shop" className="curation-link">Swara Edition 3 <span className="arrow">&gt;</span></Link>
+              <Link to="/curations" className="curation-link">Swara Edition 3 <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
                 <img src="/assets/category_sarees_1777553957867.png" alt="Niraa 2024" />
               </div>
-              <Link to="/shop" className="curation-link">Niraa 2024 <span className="arrow">&gt;</span></Link>
+              <Link to="/curations" className="curation-link">Niraa 2024 <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
                 <img src="/assets/category_designer_1777555791701.png" alt="Swara Edition 2" />
               </div>
-              <Link to="/shop" className="curation-link">Swara - Edition 2 <span className="arrow">&gt;</span></Link>
+              <Link to="/curations" className="curation-link">Swara - Edition 2 <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
                 <img src="/assets/product_saree_1777553991410.png" alt="Swara Edition 1" />
               </div>
-              <Link to="/shop" className="curation-link">Swara - Edition 1 <span className="arrow">&gt;</span></Link>
+              <Link to="/curations" className="curation-link">Swara - Edition 1 <span className="arrow">&gt;</span></Link>
             </div>
           </div>
         </div>
@@ -275,42 +275,42 @@ const Home = ({ addToCart }) => {
                 <img src="/assets/product_saree_2_1777555133419.png" alt="Korvai Silk Cottons" />
                 <div className="card-overlay-text">KORVAI SILK COTTONS <span className="icon">&gt;</span></div>
               </div>
-              <Link to="/shop" className="curation-link">Silk Cotton Korvai <span className="arrow">&gt;</span></Link>
+              <Link to="/silk-cottons" className="curation-link">Silk Cotton Korvai <span className="arrow">&gt;</span></Link>
             </div>
             <div className="silk-cotton-card">
               <div className="silk-cotton-image">
                 <img src="/assets/product_saree_3_1777555194294.png" alt="10 Yards in Silk Cottons" />
                 <div className="card-overlay-text">10 YARDS IN SILK COTTONS <span className="icon">&gt;</span></div>
               </div>
-              <Link to="/shop" className="curation-link">Silk Cotton 9 Yards <span className="arrow">&gt;</span></Link>
+              <Link to="/silk-cottons" className="curation-link">Silk Cotton 9 Yards <span className="arrow">&gt;</span></Link>
             </div>
             <div className="silk-cotton-card">
               <div className="silk-cotton-image">
                 <img src="/assets/product_saree_4_1777555210995.png" alt="Kuppadam Silk Cottons" />
                 <div className="card-overlay-text">KUPPADAM SILK COTTONS <span className="icon">&gt;</span></div>
               </div>
-              <Link to="/shop" className="curation-link">Kuppadam Sarees <span className="arrow">&gt;</span></Link>
+              <Link to="/silk-cottons" className="curation-link">Kuppadam Sarees <span className="arrow">&gt;</span></Link>
             </div>
             <div className="silk-cotton-card">
               <div className="silk-cotton-image">
                 <img src="/assets/product_saree_5_1777555231558.png" alt="Jacquard Silk Cotton" />
                 <div className="card-overlay-text">JACQUARD SILK COTTON <span className="icon">&gt;</span></div>
               </div>
-              <Link to="/shop" className="curation-link">Jacquard Silk Cottons <span className="arrow">&gt;</span></Link>
+              <Link to="/silk-cottons" className="curation-link">Jacquard Silk Cottons <span className="arrow">&gt;</span></Link>
             </div>
             <div className="silk-cotton-card">
               <div className="silk-cotton-image">
                 <img src="/assets/product_saree_6_1777555249683.png" alt="Gems of Silk Cottons" />
                 <div className="card-overlay-text">GEMS OF SILK COTTONS <span className="icon">&gt;</span></div>
               </div>
-              <Link to="/shop" className="curation-link">Gems of Silk Cottons <span className="arrow">&gt;</span></Link>
+              <Link to="/silk-cottons" className="curation-link">Gems of Silk Cottons <span className="arrow">&gt;</span></Link>
             </div>
             <div className="silk-cotton-card">
               <div className="silk-cotton-image">
                 <img src="/assets/product_saree_7_1777555265007.png" alt="Simple Silk Cottons" />
                 <div className="card-overlay-text">SIMPLE SILK COTTONS <span className="icon">&gt;</span></div>
               </div>
-              <Link to="/shop" className="curation-link">Simple Silk Cotton Sarees <span className="arrow">&gt;</span></Link>
+              <Link to="/silk-cottons" className="curation-link">Simple Silk Cotton Sarees <span className="arrow">&gt;</span></Link>
             </div>
           </div>
         </div>
@@ -326,7 +326,7 @@ const Home = ({ addToCart }) => {
             <h2>Our Heritage</h2>
             <p>VGR Boutique was born out of a passion for preserving the rich, vibrant traditions of Indian textile art. For decades, we have worked directly with master weavers to bring you authentic, pure silk sarees and exquisite lehengas.</p>
             <p>Each piece in our collection tells a story of craftsmanship, dedication, and luxury. We believe in providing an experience that celebrates the true beauty of Indian culture.</p>
-            <button className="btn btn-secondary">Read Our Story</button>
+            <Link to="/about" className="btn btn-secondary">Read Our Story</Link>
           </div>
         </div>
       </section>

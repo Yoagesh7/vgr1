@@ -9,6 +9,10 @@ import Lehengas from './pages/Lehengas';
 import Jewelry from './pages/Jewelry';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
+import About from './pages/About';
+import Curations from './pages/Curations';
+import SilkCottons from './pages/SilkCottons';
+import ScrollToTop from './components/ScrollToTop';
 import { useState } from 'react';
 
 function App() {
@@ -20,6 +24,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="app-container">
         <Navbar cartCount={cartCount} />
         <main>
@@ -32,6 +37,9 @@ function App() {
             <Route path="/jewelry" element={<Jewelry addToCart={addToCart} />} />
             <Route path="/product/:id" element={<ProductDetails addToCart={addToCart} />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/curations" element={<Curations addToCart={addToCart} />} />
+            <Route path="/silk-cottons" element={<SilkCottons addToCart={addToCart} />} />
           </Routes>
         </main>
         <Footer />

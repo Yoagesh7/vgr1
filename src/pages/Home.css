@@ -15,6 +15,7 @@
   height: 100%;
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  background-color: #1a0a0a; /* Deep elegant maroon fallback */
   z-index: 0;
 }
 
@@ -28,6 +29,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: opacity 0.8s ease;
 }
 
 .hero-overlay {
@@ -527,7 +529,12 @@
   }
 
   .container {
-    padding: 0 1rem;
+    padding: 0 1.5rem; /* Slightly more breathable than 0, but still very "full" */
+  }
+
+  .hero-content {
+    padding: 0;
+    text-align: center;
   }
 
   .section {

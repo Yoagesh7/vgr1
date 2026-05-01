@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { useProducts } from '../data/products';
 import './Shop.css';
 
 const Curations = ({ addToCart }) => {
+  const products = useProducts();
   // Let's just use some products for demonstration
   const curationProducts = products.slice(4, 12);
 

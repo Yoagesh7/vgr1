@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { PlayCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import './Home.css';
 
-import { products } from '../data/products';
+import { useProducts } from '../data/products';
 
 const Home = ({ addToCart }) => {
+  const products = useProducts();
   const heroSlides = [
     {
       type: 'video',
@@ -50,6 +51,7 @@ const Home = ({ addToCart }) => {
   ];
 
   const [currentHero, setCurrentHero] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
 
   const nextSlide = useCallback(() => {
     setCurrentHero((prev) => (prev + 1) % heroSlides.length);
@@ -58,6 +60,26 @@ const Home = ({ addToCart }) => {
   const prevSlide = useCallback(() => {
     setCurrentHero((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
   }, [heroSlides.length]);
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    const touchEndPos = e.changedTouches[0].clientX;
+    const difference = touchStart - touchEndPos;
+    const swipeThreshold = 50;
+
+    if (Math.abs(difference) > swipeThreshold) {
+      if (difference > 0) {
+        // Swiped left, show next slide
+        nextSlide();
+      } else {
+        // Swiped right, show previous slide
+        prevSlide();
+      }
+    }
+  };
 
   useEffect(() => {
     const timer = setInterval(nextSlide, 7000); // 7 seconds for all media
@@ -85,7 +107,11 @@ const Home = ({ addToCart }) => {
   return (
     <div className="home-page animate-fade-in">
       {/* Hero Section */}
-      <section className="hero">
+      <section 
+        className="hero"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {heroSlides.map((slide, idx) => (
           <div 
             key={idx} 

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { useProducts } from '../data/products';
 import './Shop.css';
 
 const SilkCottons = ({ addToCart }) => {
+  const products = useProducts();
   // Let's filter some products
   const silkCottonProducts = products.filter(p => p.category === 'Sarees').slice(0, 8);
 

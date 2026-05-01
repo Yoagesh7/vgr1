@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { products } from '../data/products';
+import { useProducts } from '../data/products';
 import './Shop.css';
 
 const Shop = ({ addToCart }) => {
+  const products = useProducts();
   const [searchParams] = useSearchParams();
   const categoryParam = searchParams.get('category');
 

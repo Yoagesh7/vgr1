@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { useProducts } from '../data/products';
 import './Shop.css';
 
 const Sarees = ({ addToCart }) => {
+  const products = useProducts();
   // Show a subset of products for Sarees
   const sareeProducts = products.slice(0, 12); 
 

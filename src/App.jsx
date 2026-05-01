@@ -12,6 +12,7 @@ import Cart from './pages/Cart';
 import About from './pages/About';
 import Curations from './pages/Curations';
 import SilkCottons from './pages/SilkCottons';
+import Admin from './pages/Admin';
 import ScrollToTop from './components/ScrollToTop';
 import { useState } from 'react';
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/curations" element={<Curations addToCart={addToCart} />} />
             <Route path="/silk-cottons" element={<SilkCottons addToCart={addToCart} />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
         <Footer />

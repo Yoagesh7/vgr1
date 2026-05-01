@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { useProducts } from '../data/products';
 import './Shop.css';
 
 const Jewelry = ({ addToCart }) => {
+  const products = useProducts();
   const jewelryProducts = products.filter(p => p.category === 'Jewelry');
 
   return (

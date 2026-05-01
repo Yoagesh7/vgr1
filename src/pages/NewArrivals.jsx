@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { useProducts } from '../data/products';
 import './Shop.css';
 
 const NewArrivals = ({ addToCart }) => {
+  const products = useProducts();
   // Show first 8 products for New Arrivals
   const newProducts = products.slice(0, 8); 
 

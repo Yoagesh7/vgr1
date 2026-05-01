@@ -1,11 +1,24 @@
 import { useParams, Link } from 'react-router-dom';
 import { ShoppingBag, Heart, Share2, ChevronRight, Star, Truck, ShieldCheck, RefreshCcw } from 'lucide-react';
-import { products } from '../data/products';
+import { useProducts } from '../data/products';
 import './ProductDetails.css';
 
 const ProductDetails = ({ addToCart }) => {
   const { id } = useParams();
-  const product = products.find(p => p.id === parseInt(id)) || products[0];
+  const products = useProducts();
+  const product = products.find(p => p.id === parseInt(id, 10)) || products[0];
+
+  if (!product) {
+    return (
+      <div className="product-details-page animate-fade-in">
+        <div className="container" style={{ padding: '6rem 0', textAlign: 'center' }}>
+          <h2>No product available</h2>
+          <p>Please add products from admin dashboard.</p>
+          <Link to="/shop" className="btn btn-primary">Go to Shop</Link>
+        </div>
+      </div>
+    );
+  }
 
   const similarProducts = products
     .filter(p => p.category === product.category && p.id !== product.id)

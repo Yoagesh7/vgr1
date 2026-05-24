@@ -48,7 +48,7 @@ const ProductDetails = ({ addToCart }) => {
             </div>
             <div className="thumbnail-list">
               <img src={product.image} alt="Thumb" className="active" />
-              <img src="/assets/category_sarees_1777553957867.png" alt="Thumb" />
+              <img src="/assets/portrait-young-woman-wearing-tradition-sari-garment.jpg" alt="Thumb" />
             </div>
           </div>
 
@@ -88,13 +88,16 @@ const ProductDetails = ({ addToCart }) => {
             </div>
 
             <div className="action-buttons">
-              <button className="btn btn-primary btn-full" onClick={addToCart}>
+              <button className="btn btn-outline btn-full" onClick={addToCart}>
                 <ShoppingBag size={18} /> Add to Cart
               </button>
-              <button className="btn btn-outline icon-btn">
+              <button className="btn btn-primary btn-full buy-now-btn" onClick={() => { addToCart(); alert('Added to cart! Proceeding to Checkout...'); }}>
+                Buy Now
+              </button>
+              <button className="btn btn-outline icon-btn" aria-label="Add to Wishlist">
                 <Heart size={20} />
               </button>
-              <button className="btn btn-outline icon-btn">
+              <button className="btn btn-outline icon-btn" aria-label="Share Product">
                 <Share2 size={20} />
               </button>
             </div>

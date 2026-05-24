@@ -11,6 +11,7 @@ const Home = ({ addToCart }) => {
     {
       type: 'video',
       src: '/assets/hero-media/L1.mp4',
+      poster: '/assets/hero-media/l1_poster.png',
       title: 'Cinematic Elegance',
       subtitle: 'Experience the flow of pure silk in motion. Crafted for the modern muse.',
       fontFamily: "'Cinzel', serif",
@@ -27,6 +28,7 @@ const Home = ({ addToCart }) => {
     {
       type: 'video',
       src: '/assets/hero-media/L2.mp4',
+      poster: '/assets/hero-media/l2_poster.png',
       title: 'The Art of Weaving',
       subtitle: 'Every thread tells a story of heritage and masterful craftsmanship.',
       fontFamily: "'Cormorant Garamond', serif",
@@ -86,6 +88,16 @@ const Home = ({ addToCart }) => {
     return () => clearInterval(timer);
   }, [nextSlide, currentHero]);
 
+  const handleVideoHover = (e) => {
+    e.currentTarget.play().catch((err) => {
+      console.log('Video play interrupted:', err);
+    });
+  };
+
+  const handleVideoLeave = (e) => {
+    e.currentTarget.pause();
+  };
+
   const currentSlide = heroSlides[currentHero];
 
   const videos = [
@@ -98,10 +110,12 @@ const Home = ({ addToCart }) => {
   ];
 
   const categories = [
-    { name: 'Bridal Sarees', image: '/assets/category_bridal_1777555751544.png' },
-    { name: 'Kanjeevaram Silk', image: '/assets/category_banarasi_1777555774066.png' },
-    { name: 'Banarasi Silk', image: '/assets/category_sarees_1777553957867.png' },
-    { name: 'Designer Wear', image: '/assets/category_designer_1777555791701.png' }
+    { name: 'Bridal Sarees', image: '/assets/portrait-young-woman-wearing-tradition-sari-garment.jpg' },
+    { name: 'Kanjeevaram Silk', image: '/assets/young-indian-woman-wearing-sari.jpg' },
+    { name: 'Banarasi Silk', image: '/assets/abhay-RQP_M6unWpA-unsplash.jpg' },
+    { name: 'Silk Cottons', image: '/assets/bulbul-ahmed-8yawVKD8xf4-unsplash.jpg' },
+    { name: 'Lehengas', image: '/assets/bulbul-ahmed-9rPam0CAYgM-unsplash.jpg' },
+    { name: 'Designer Wear', image: '/assets/graphics-anywhere-k7Kdss__aDg-unsplash.jpg' }
   ];
 
   return (
@@ -118,22 +132,28 @@ const Home = ({ addToCart }) => {
             className={`hero-slide ${idx === currentHero ? 'active' : ''}`}
           >
             {slide.type === 'video' ? (
-              <video 
-                autoPlay 
-                muted 
-                loop
-                playsInline 
-                preload="auto"
-                className="hero-media" 
-              >
-                <source src={slide.src} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              idx === currentHero ? (
+                <video 
+                  autoPlay 
+                  muted 
+                  loop
+                  playsInline 
+                  preload="auto"
+                  poster={slide.poster}
+                  className="hero-media" 
+                >
+                  <source src={slide.src} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img src={slide.poster} alt={slide.title} className="hero-media" />
+              )
             ) : (
               <img 
                 src={slide.src} 
                 alt={slide.title} 
                 className="hero-media" 
+                loading={idx === 0 ? "eager" : "lazy"}
               />
             )}
           </div>
@@ -165,6 +185,9 @@ const Home = ({ addToCart }) => {
         </div>
       </section>
 
+      {/* Saree Border Divider */}
+      <div className="saree-border-divider"></div>
+
       {/* Categories Section */}
       <section className="section categories motif-bg">
         <div className="container">
@@ -176,10 +199,10 @@ const Home = ({ addToCart }) => {
                 to={`/shop?category=${encodeURIComponent(cat.name)}`} 
                 className="category-card"
               >
-                <img src={cat.image} alt={cat.name} />
-                <div className="category-content">
-                  <h3>{cat.name}</h3>
+                <div className="category-image-wrapper">
+                  <img src={cat.image} alt={cat.name} loading="lazy" />
                 </div>
+                <h3 className="category-title">{cat.name}</h3>
               </Link>
             ))}
           </div>
@@ -229,12 +252,19 @@ const Home = ({ addToCart }) => {
             <div key={idx} className="video-card short-card">
               <div className="video-wrapper">
                 <video 
-                  autoPlay 
+                  autoPlay
                   muted 
                   loop 
                   playsInline
                   preload="metadata"
                   className="short-video"
+                  onClick={(e) => {
+                    if (e.currentTarget.paused) {
+                      e.currentTarget.play().catch((err) => console.log(err));
+                    } else {
+                      e.currentTarget.pause();
+                    }
+                  }}
                 >
                   <source src={vid} type="video/mp4" />
                   Your browser does not support the video tag.
@@ -258,31 +288,31 @@ const Home = ({ addToCart }) => {
           <div className="curations-grid">
             <div className="curation-card">
               <div className="curation-image">
-                <img src="/assets/category_bridal_1777555751544.png" alt="Niraa Deepavali Edit" />
+                <img src="/assets/portrait-young-woman-wearing-tradition-sari-garment.jpg" alt="Niraa Deepavali Edit" />
               </div>
               <Link to="/curations" className="curation-link">Niraa - Deepavali 2025 Edit <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
-                <img src="/assets/category_banarasi_1777555774066.png" alt="Swara Edition 3" />
+                <img src="/assets/young-indian-woman-wearing-sari.jpg" alt="Swara Edition 3" />
               </div>
               <Link to="/curations" className="curation-link">Swara Edition 3 <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
-                <img src="/assets/category_sarees_1777553957867.png" alt="Niraa 2024" />
+                <img src="/assets/abhay-RQP_M6unWpA-unsplash.jpg" alt="Niraa 2024" />
               </div>
               <Link to="/curations" className="curation-link">Niraa 2024 <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
-                <img src="/assets/category_designer_1777555791701.png" alt="Swara Edition 2" />
+                <img src="/assets/graphics-anywhere-k7Kdss__aDg-unsplash.jpg" alt="Swara Edition 2" />
               </div>
               <Link to="/curations" className="curation-link">Swara - Edition 2 <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
-                <img src="/assets/product_saree_1777553991410.png" alt="Swara Edition 1" />
+                <img src="/assets/bulbul-ahmed-Z528f1BWM00-unsplash.jpg" alt="Swara Edition 1" />
               </div>
               <Link to="/curations" className="curation-link">Swara - Edition 1 <span className="arrow">&gt;</span></Link>
             </div>
@@ -290,57 +320,7 @@ const Home = ({ addToCart }) => {
         </div>
       </section>
 
-      {/* Silk Cottons Section */}
-      <section className="section silk-cottons">
-        <div className="container">
-          <h2 className="section-title elegant-title">Silk Cottons | The Everyday Luxury Store</h2>
-          <p className="section-subtitle">For the woman who values tradition, but chooses comfort. For the saree that moves with you, not against you.</p>
-          <div className="silk-cottons-grid">
-            <div className="silk-cotton-card">
-              <div className="silk-cotton-image">
-                <img src="/assets/product_saree_2_1777555133419.png" alt="Korvai Silk Cottons" />
-                <div className="card-overlay-text">KORVAI SILK COTTONS <span className="icon">&gt;</span></div>
-              </div>
-              <Link to="/silk-cottons" className="curation-link">Silk Cotton Korvai <span className="arrow">&gt;</span></Link>
-            </div>
-            <div className="silk-cotton-card">
-              <div className="silk-cotton-image">
-                <img src="/assets/product_saree_3_1777555194294.png" alt="10 Yards in Silk Cottons" />
-                <div className="card-overlay-text">10 YARDS IN SILK COTTONS <span className="icon">&gt;</span></div>
-              </div>
-              <Link to="/silk-cottons" className="curation-link">Silk Cotton 9 Yards <span className="arrow">&gt;</span></Link>
-            </div>
-            <div className="silk-cotton-card">
-              <div className="silk-cotton-image">
-                <img src="/assets/product_saree_4_1777555210995.png" alt="Kuppadam Silk Cottons" />
-                <div className="card-overlay-text">KUPPADAM SILK COTTONS <span className="icon">&gt;</span></div>
-              </div>
-              <Link to="/silk-cottons" className="curation-link">Kuppadam Sarees <span className="arrow">&gt;</span></Link>
-            </div>
-            <div className="silk-cotton-card">
-              <div className="silk-cotton-image">
-                <img src="/assets/product_saree_5_1777555231558.png" alt="Jacquard Silk Cotton" />
-                <div className="card-overlay-text">JACQUARD SILK COTTON <span className="icon">&gt;</span></div>
-              </div>
-              <Link to="/silk-cottons" className="curation-link">Jacquard Silk Cottons <span className="arrow">&gt;</span></Link>
-            </div>
-            <div className="silk-cotton-card">
-              <div className="silk-cotton-image">
-                <img src="/assets/product_saree_6_1777555249683.png" alt="Gems of Silk Cottons" />
-                <div className="card-overlay-text">GEMS OF SILK COTTONS <span className="icon">&gt;</span></div>
-              </div>
-              <Link to="/silk-cottons" className="curation-link">Gems of Silk Cottons <span className="arrow">&gt;</span></Link>
-            </div>
-            <div className="silk-cotton-card">
-              <div className="silk-cotton-image">
-                <img src="/assets/product_saree_7_1777555265007.png" alt="Simple Silk Cottons" />
-                <div className="card-overlay-text">SIMPLE SILK COTTONS <span className="icon">&gt;</span></div>
-              </div>
-              <Link to="/silk-cottons" className="curation-link">Simple Silk Cotton Sarees <span className="arrow">&gt;</span></Link>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* About Section */}
       <section className="section about">

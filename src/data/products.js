@@ -1,37 +1,48 @@
 import { useEffect, useState } from 'react';
 
 export const productImages = [
-  '/assets/product_saree_1777553991410.png',
-  '/assets/product_saree_2_1777555133419.png',
-  '/assets/product_saree_3_1777555194294.png',
-  '/assets/product_saree_4_1777555210995.png',
-  '/assets/product_saree_5_1777555231558.png',
-  '/assets/product_saree_6_1777555249683.png',
-  '/assets/product_saree_7_1777555265007.png',
-  '/assets/product_saree_8_1777555280446.png'
+  '/assets/portrait-young-woman-wearing-tradition-sari-garment.jpg',
+  '/assets/young-indian-woman-wearing-sari.jpg',
+  '/assets/abhay-RQP_M6unWpA-unsplash.jpg',
+  '/assets/graphics-anywhere-k7Kdss__aDg-unsplash.jpg',
+  '/assets/bulbul-ahmed-8yawVKD8xf4-unsplash.jpg',
+  '/assets/bulbul-ahmed-9rPam0CAYgM-unsplash.jpg',
+  '/assets/bulbul-ahmed-HMQpUMuZ0zs-unsplash.jpg',
+  '/assets/bulbul-ahmed-Z528f1BWM00-unsplash.jpg',
+  '/assets/bulbul-ahmed-ohEYtC4TEsg-unsplash.jpg',
+  '/assets/bulbul-ahmed-SiQTqnp-qd8-unsplash.jpg',
+  '/assets/bulbul-ahmed-tcg3FrrxlSg-unsplash.jpg'
 ];
 
-const STORAGE_KEY = 'vgr_products';
+const STORAGE_KEY = 'vgr_products_v2';
 
-export const createDefaultProducts = () => Array.from({ length: 32 }, (_, i) => ({
-  id: i + 1,
-  name: i < 8 ? [
-    'Royal Kanjeevaram Silk',
-    'Midnight Blue Banarasi',
-    'Saffron Heritage Silk',
-    'Ebony Designer Saree',
-    'Pastel Floral Cotton',
-    'Imperial Purple Silk',
-    'Blush Pink Chiffon',
-    'White & Gold Kerala Silk'
-  ][i] : `Premium Silk Saree ${i + 1}`,
-  price: (Math.random() * 5000 + 1000).toFixed(0),
-  image: productImages[i % productImages.length],
-  category: ['Sarees', 'Lehengas', 'Jewelry', 'Designer Wear'][i % 4],
-  size: ['S', 'M', 'L', 'XL'][i % 4],
-  stock: Math.floor(Math.random() * 50 + 5),
-  description: 'Premium handcrafted product'
-}));
+export const createDefaultProducts = () => Array.from({ length: 33 }, (_, i) => {
+  const imageIndex = i % productImages.length;
+  const names = [
+    'Golden Heritage Banarasi Saree',
+    'Emerald Green Kanjeevaram Silk',
+    'Crimson Handwoven Silk Saree',
+    'Royal Indigo Designer Saree',
+    'Saffron Korvai Silk Cotton',
+    'Maroon Wedding Zari Lehenga',
+    'Pastel Pink Festive Curation',
+    'Exquisite Royal Blue Silk',
+    'Amber Gold Kuppadam Saree',
+    'Jacquard Floral Silk Saree',
+    'Scarlet Banarasi Brocade'
+  ];
+
+  return {
+    id: i + 1,
+    name: names[imageIndex] || `Premium Heritage Saree ${i + 1}`,
+    price: (Math.random() * 5000 + 3000).toFixed(0),
+    image: productImages[imageIndex],
+    category: ['Bridal Sarees', 'Kanjeevaram Silk', 'Banarasi Silk', 'Designer Wear'][i % 4],
+    size: ['S', 'M', 'L', 'XL'][i % 4],
+    stock: Math.floor(Math.random() * 50 + 5),
+    description: 'Breathtaking handloom creation crafted with pure love, fine silk threads, and traditional Indian artistry. Perfect for weddings, celebrations, and festive events.'
+  };
+});
 
 export const getProductsFromStorage = () => {
   if (typeof window === 'undefined') {

@@ -5,8 +5,8 @@ import './Cart.css';
 const Cart = () => {
   // Dummy cart data
   const cartItems = [
-    { id: 1, name: 'Premium Silk Saree 1', price: 350.00, quantity: 1, image: '/assets/product_saree_1777553991410.png' },
-    { id: 2, name: 'Premium Silk Saree 2', price: 420.00, quantity: 1, image: '/assets/category_sarees_1777553957867.png' }
+    { id: 1, name: 'Emerald Green Kanjeevaram Silk', price: 4500.00, quantity: 1, image: '/assets/young-indian-woman-wearing-sari.jpg' },
+    { id: 2, name: 'Crimson Handwoven Silk Saree', price: 5200.00, quantity: 1, image: '/assets/abhay-RQP_M6unWpA-unsplash.jpg' }
   ];
 
   const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);

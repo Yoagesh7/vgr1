@@ -32,9 +32,9 @@ const Preloader = ({ onComplete }) => {
 
       {/* Main Luxury Brand Identity in the center */}
       <div className="preloader-shield">
-        {/* Handcrafted Golden Lotus SVG Icon */}
+        {/* Handcrafted Golden Shree (श्री) & Saree Drape SVG Icon */}
         <div className="preloader-logo">
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#aa771c" />
@@ -43,39 +43,86 @@ const Preloader = ({ onComplete }) => {
                 <stop offset="75%" stopColor="#f6e4a6" />
                 <stop offset="100%" stopColor="#aa7c11" />
               </linearGradient>
+              <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
             </defs>
-            {/* Elegant Outer Leaf Outlines */}
+            
+            {/* Elegant Flowing Saree Pleats / Drape curves circling the Shree icon */}
             <path 
-              d="M50 15 C50 15 32 38 32 58 C32 68 40 76 50 76 C60 76 68 68 68 58 C68 38 50 15 50 15 Z" 
+              d="M20,68 C20,95 48,102 60,102 C85,102 102,88 102,70 C102,52 85,45 70,42" 
               stroke="url(#goldGradient)" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            />
-            {/* Left Wing Lotus Petal */}
-            <path 
-              d="M50 32 C42 42 22 50 22 64 C22 72 29 78 37 78 C45 78 49 72 50 68" 
-              stroke="url(#goldGradient)" 
-              strokeWidth="1.5" 
+              strokeWidth="2.5" 
               strokeLinecap="round"
             />
-            {/* Right Wing Lotus Petal */}
             <path 
-              d="M50 32 C58 42 78 50 78 64 C78 72 71 78 63 78 C55 78 51 72 50 68" 
+              d="M23,73 C23,98 50,105 60,105 C88,105 105,92 105,73 C105,58 92,49 75,45" 
               stroke="url(#goldGradient)" 
-              strokeWidth="1.5" 
+              strokeWidth="1" 
+              strokeDasharray="3,3"
+              opacity="0.8"
               strokeLinecap="round"
             />
-            {/* Inner Core Petals */}
             <path 
-              d="M50 42 C46 48 38 53 38 65 C38 71 43 75 50 75 C57 75 62 71 62 65 C62 53 54 42 50 42 Z" 
+              d="M15,62 C15,85 38,95 50,95 C75,95 90,82 90,68" 
               stroke="url(#goldGradient)" 
               strokeWidth="1.2" 
-              fill="rgba(212, 175, 55, 0.05)"
+              opacity="0.6"
+              strokeLinecap="round"
             />
-            {/* Royal Weaving Loom Warp Lines beneath the Lotus */}
-            <line x1="50" y1="76" x2="50" y2="88" stroke="url(#goldGradient)" strokeWidth="2" strokeLinecap="round" />
-            <path d="M40 85 C45 88 55 88 60 85" stroke="url(#goldGradient)" strokeWidth="1.5" strokeLinecap="round" />
+
+            {/* Traditional Sanskrit "Shree" (श्री) Calligraphy */}
+            <g transform="translate(10, 8)">
+              {/* Shirorekha (Top horizontal line) */}
+              <path 
+                d="M30,35 L70,35" 
+                stroke="url(#goldGradient)" 
+                strokeWidth="4.5" 
+                strokeLinecap="round" 
+                filter="url(#goldGlow)"
+              />
+              
+              {/* Vertical stem */}
+              <path 
+                d="M52,35 L52,70" 
+                stroke="url(#goldGradient)" 
+                strokeWidth="4" 
+                strokeLinecap="round"
+              />
+              
+              {/* Shra loop & diagonal stroke */}
+              <path 
+                d="M52,43 C42,43 35,37 35,46 C35,53 43,53 52,49" 
+                stroke="url(#goldGradient)" 
+                strokeWidth="3.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+              <path 
+                d="M46,47 L34,60" 
+                stroke="url(#goldGradient)" 
+                strokeWidth="3.5" 
+                strokeLinecap="round"
+              />
+              
+              {/* Vowel sign 'ee' (ी matra) curve wrapping to vertical stem */}
+              <path 
+                d="M52,35 C58,18 70,18 70,35 L70,70" 
+                stroke="url(#goldGradient)" 
+                strokeWidth="4" 
+                strokeLinecap="round"
+              />
+              
+              {/* Gold Bindu Dot */}
+              <circle 
+                cx="61" 
+                cy="22" 
+                r="3.2" 
+                fill="url(#goldGradient)" 
+                filter="url(#goldGlow)"
+              />
+            </g>
           </svg>
         </div>
 

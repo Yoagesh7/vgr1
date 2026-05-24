@@ -136,6 +136,8 @@ const Home = ({ addToCart }) => {
             {slide.type === 'video' ? (
               idx === currentHero ? (
                 <video 
+                  key={slide.src}
+                  src={slide.src}
                   autoPlay 
                   muted 
                   loop
@@ -144,7 +146,6 @@ const Home = ({ addToCart }) => {
                   poster={slide.poster}
                   className="hero-media" 
                 >
-                  <source src={slide.src} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               ) : (
@@ -254,6 +255,7 @@ const Home = ({ addToCart }) => {
             <div key={idx} className="video-card short-card">
               <div className="video-wrapper">
                 <video 
+                  src={vid}
                   autoPlay
                   muted 
                   loop 
@@ -268,7 +270,6 @@ const Home = ({ addToCart }) => {
                     }
                   }}
                 >
-                  <source src={vid} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
                 <div className="video-overlay">

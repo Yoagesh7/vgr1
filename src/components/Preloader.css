@@ -1,0 +1,236 @@
+/* Preloader Stylesheet - Premium Saree Border & Zari Shine Preloader */
+
+:root {
+  --color-maroon: #54061a;
+  --color-maroon-dark: #2d020d;
+  --color-gold: #d4af37;
+  --color-gold-light: #f6e4a6;
+  --color-gold-dark: #aa7c11;
+}
+
+.preloader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, var(--color-maroon) 0%, var(--color-maroon-dark) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  overflow: hidden;
+  transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.8s;
+  opacity: 1;
+  visibility: visible;
+}
+
+.preloader-container.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Stacking Saree Borders Framing the Screen */
+.preloader-border {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.preloader-border.top {
+  top: 0;
+}
+
+.preloader-border.bottom {
+  bottom: 0;
+  transform: scaleY(-1); /* Flips the bottom border beautifully */
+}
+
+/* Border 1: Grand double gold woven edge */
+.zari-edge {
+  height: 8px;
+  background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold-light), var(--color-gold), var(--color-gold-dark));
+  background-size: 300% 100%;
+  animation: shineSweep 4s linear infinite;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Border 2: Temple Gopuram Motif */
+.zari-temple {
+  height: 16px;
+  background-color: var(--color-maroon-dark);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16' viewBox='0 0 24 16'%3E%3Cpolygon points='12,1 23,15 1,15' fill='none' stroke='%23d4af37' stroke-width='1.5'/%3E%3Ccircle cx='12' cy='10' r='1' fill='%23d4af37'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 24px 16px;
+  opacity: 0.9;
+  position: relative;
+}
+
+/* Border 3: Royal Diamond Lattice (Jaal) Border */
+.zari-jaal {
+  height: 30px;
+  background-color: rgba(66, 2, 17, 0.95);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30' viewBox='0 0 60 30'%3E%3Cline x1='0' y1='0' x2='30' y2='30' stroke='%23d4af37' stroke-width='1.2' opacity='0.75'/%3E%3Cline x1='30' y1='0' x2='60' y2='30' stroke='%23d4af37' stroke-width='1.2' opacity='0.75'/%3E%3Cline x1='30' y1='0' x2='0' y2='30' stroke='%23d4af37' stroke-width='1.2' opacity='0.75'/%3E%3Cline x1='60' y1='0' x2='30' y2='30' stroke='%23d4af37' stroke-width='1.2' opacity='0.75'/%3E%3Cpath d='M30,8 C30,8 28,11 28,13 C28,15 30,16 30,16 C30,16 32,15 32,13 C32,11 30,8 30,8 Z' fill='%23d4af37'/%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23d4af37'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 60px 30px;
+  border-bottom: 3px double var(--color-gold);
+}
+
+/* Central Glowing Shield */
+.preloader-shield {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  animation: floatUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Lotus Flower Logo Symbol */
+.preloader-logo {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+  animation: logoPulse 2.5s ease-in-out infinite;
+}
+
+.preloader-logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Luxury Metallic Gold Shine Title */
+.preloader-title {
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShine 3s linear infinite;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+}
+
+.preloader-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--color-gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeInDelay 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+/* Circular Loading Bar */
+.preloader-spinner {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  animation: fadeInDelay 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+}
+
+.preloader-spinner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(212, 175, 55, 0.15);
+  border-radius: 50%;
+}
+
+.preloader-spinner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-top-color: var(--color-gold);
+  border-right-color: var(--color-gold-light);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDelay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.65));
+  }
+}
+
+@keyframes goldShine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes shineSweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .preloader-title {
+    font-size: 2.2rem;
+    letter-spacing: 0.18em;
+  }
+  .preloader-subtitle {
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+  }
+  .zari-jaal {
+    height: 24px;
+    background-size: 48px 24px;
+  }
+}

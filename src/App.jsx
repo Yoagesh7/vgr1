@@ -14,9 +14,11 @@ import Curations from './pages/Curations';
 import SilkCottons from './pages/SilkCottons';
 import Admin from './pages/Admin';
 import ScrollToTop from './components/ScrollToTop';
+import Preloader from './components/Preloader';
 import { useState } from 'react';
 
 function App() {
+  const [showPreloader, setShowPreloader] = useState(true);
   const [cartCount, setCartCount] = useState(0);
 
   const addToCart = () => {
@@ -24,9 +26,11 @@ function App() {
   };
 
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="app-container">
+    <>
+      {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+      <Router>
+        <ScrollToTop />
+        <div className="app-container">
         <Navbar cartCount={cartCount} />
         <main>
           <Routes>
@@ -47,6 +51,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+  </>
   );
 }
 

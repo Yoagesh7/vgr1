@@ -4,14 +4,16 @@ import { PlayCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import './Home.css';
 
 import { useProducts } from '../data/products';
+import { getAssetUrl } from '../utils';
 
 const Home = ({ addToCart }) => {
   const products = useProducts();
+  
   const heroSlides = [
     {
       type: 'video',
-      src: '/assets/hero-media/L1.mp4',
-      poster: '/assets/hero-media/l1_poster.png',
+      src: getAssetUrl('/assets/hero-media/L1.mp4'),
+      poster: getAssetUrl('/assets/hero-media/l1_poster.png'),
       title: 'Cinematic Elegance',
       subtitle: 'Experience the flow of pure silk in motion. Crafted for the modern muse.',
       fontFamily: "'Cinzel', serif",
@@ -19,7 +21,7 @@ const Home = ({ addToCart }) => {
     },
     {
       type: 'image',
-      src: '/assets/hero-media/pexels-amit-chowdhury-2402860-6786973.jpg',
+      src: getAssetUrl('/assets/hero-media/pexels-amit-chowdhury-2402860-6786973.jpg'),
       title: 'Timeless Traditions',
       subtitle: 'Discover the finest collection of handcrafted Indian sarees, woven with tradition and modern luxury.',
       fontFamily: "'Playfair Display', serif",
@@ -27,8 +29,8 @@ const Home = ({ addToCart }) => {
     },
     {
       type: 'video',
-      src: '/assets/hero-media/L2.mp4',
-      poster: '/assets/hero-media/l2_poster.png',
+      src: getAssetUrl('/assets/hero-media/L2.mp4'),
+      poster: getAssetUrl('/assets/hero-media/l2_poster.png'),
       title: 'The Art of Weaving',
       subtitle: 'Every thread tells a story of heritage and masterful craftsmanship.',
       fontFamily: "'Cormorant Garamond', serif",
@@ -36,7 +38,7 @@ const Home = ({ addToCart }) => {
     },
     {
       type: 'image',
-      src: '/assets/hero-media/pexels-arif-5377395.jpg',
+      src: getAssetUrl('/assets/hero-media/pexels-arif-5377395.jpg'),
       title: 'Modern Grace',
       subtitle: 'Where contemporary design meets classical beauty in perfect harmony.',
       fontFamily: "'Inter', sans-serif",
@@ -44,7 +46,7 @@ const Home = ({ addToCart }) => {
     },
     {
       type: 'image',
-      src: '/assets/hero-media/pexels-deepak-sharma-503041381-35963173.jpg',
+      src: getAssetUrl('/assets/hero-media/pexels-deepak-sharma-503041381-35963173.jpg'),
       title: 'Festive Radiance',
       subtitle: 'Light up every celebration with colors that speak to the soul.',
       fontFamily: "'Cinzel', serif",
@@ -107,7 +109,7 @@ const Home = ({ addToCart }) => {
     '/assets/videos/7184195-uhd_2160_3840_25fps.mp4',
     '/assets/videos/8750557-uhd_2160_4096_24fps.mp4',
     '/assets/videos/8751959-uhd_2160_4096_24fps.mp4'
-  ];
+  ].map(getAssetUrl);
 
   const categories = [
     { name: 'Bridal Sarees', image: '/assets/portrait-young-woman-wearing-tradition-sari-garment.jpg' },
@@ -116,7 +118,7 @@ const Home = ({ addToCart }) => {
     { name: 'Silk Cottons', image: '/assets/bulbul-ahmed-8yawVKD8xf4-unsplash.jpg' },
     { name: 'Lehengas', image: '/assets/bulbul-ahmed-9rPam0CAYgM-unsplash.jpg' },
     { name: 'Designer Wear', image: '/assets/graphics-anywhere-k7Kdss__aDg-unsplash.jpg' }
-  ];
+  ].map(cat => ({ ...cat, image: getAssetUrl(cat.image) }));
 
   return (
     <div className="home-page animate-fade-in">
@@ -279,40 +281,38 @@ const Home = ({ addToCart }) => {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* Exclusive Curations Section */}
+      </section>      {/* Exclusive Curations Section */}
       <section className="section curations">
         <div className="container">
           <h2 className="section-title elegant-title">PRASHANTI's Exclusive Curations</h2>
           <div className="curations-grid">
             <div className="curation-card">
               <div className="curation-image">
-                <img src="/assets/portrait-young-woman-wearing-tradition-sari-garment.jpg" alt="Niraa Deepavali Edit" />
+                <img src={getAssetUrl('/assets/portrait-young-woman-wearing-tradition-sari-garment.jpg')} alt="Niraa Deepavali Edit" />
               </div>
               <Link to="/curations" className="curation-link">Niraa - Deepavali 2025 Edit <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
-                <img src="/assets/young-indian-woman-wearing-sari.jpg" alt="Swara Edition 3" />
+                <img src={getAssetUrl('/assets/young-indian-woman-wearing-sari.jpg')} alt="Swara Edition 3" />
               </div>
               <Link to="/curations" className="curation-link">Swara Edition 3 <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
-                <img src="/assets/abhay-RQP_M6unWpA-unsplash.jpg" alt="Niraa 2024" />
+                <img src={getAssetUrl('/assets/abhay-RQP_M6unWpA-unsplash.jpg')} alt="Niraa 2024" />
               </div>
               <Link to="/curations" className="curation-link">Niraa 2024 <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
-                <img src="/assets/graphics-anywhere-k7Kdss__aDg-unsplash.jpg" alt="Swara Edition 2" />
+                <img src={getAssetUrl('/assets/graphics-anywhere-k7Kdss__aDg-unsplash.jpg')} alt="Swara Edition 2" />
               </div>
               <Link to="/curations" className="curation-link">Swara - Edition 2 <span className="arrow">&gt;</span></Link>
             </div>
             <div className="curation-card">
               <div className="curation-image">
-                <img src="/assets/bulbul-ahmed-Z528f1BWM00-unsplash.jpg" alt="Swara Edition 1" />
+                <img src={getAssetUrl('/assets/bulbul-ahmed-Z528f1BWM00-unsplash.jpg')} alt="Swara Edition 1" />
               </div>
               <Link to="/curations" className="curation-link">Swara - Edition 1 <span className="arrow">&gt;</span></Link>
             </div>
@@ -320,13 +320,11 @@ const Home = ({ addToCart }) => {
         </div>
       </section>
 
-
-
       {/* About Section */}
       <section className="section about">
         <div className="container about-container">
           <div className="about-image">
-            <img src="/assets/hero_banner_1777553940370.png" alt="About Us" />
+            <img src={getAssetUrl('/assets/hero_banner_1777553940370.png')} alt="About Us" />
           </div>
           <div className="about-content">
             <h2>Our Heritage</h2>

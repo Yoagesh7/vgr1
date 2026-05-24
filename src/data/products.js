@@ -72,6 +72,8 @@ export const getProductsFromStorage = () => {
   return fallback;
 };
 
+import { getAssetUrl } from '../utils';
+
 export const saveProductsToStorage = (updatedProducts) => {
   if (typeof window === 'undefined') {
     return;
@@ -81,10 +83,12 @@ export const saveProductsToStorage = (updatedProducts) => {
   window.dispatchEvent(new Event('vgr-products-updated'));
 };
 
-export const products = getProductsFromStorage();
+export const products = getProductsFromStorage().map(p => ({ ...p, image: getAssetUrl(p.image) }));
 
 export const useProducts = () => {
-  const [liveProducts, setLiveProducts] = useState(getProductsFromStorage());
+  const [liveProducts, setLiveProducts] = useState(() => 
+    getProductsFromStorage().map(p => ({ ...p, image: getAssetUrl(p.image) }))
+  );
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -92,7 +96,7 @@ export const useProducts = () => {
     }
 
     const syncProducts = () => {
-      setLiveProducts(getProductsFromStorage());
+      setLiveProducts(getProductsFromStorage().map(p => ({ ...p, image: getAssetUrl(p.image) })));
     };
 
     window.addEventListener('storage', syncProducts);

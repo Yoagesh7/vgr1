@@ -11,6 +11,14 @@ const Home = ({ addToCart }) => {
   
   const heroSlides = [
     {
+      type: 'image',
+      src: getAssetUrl('/assets/hero-media/pexels-amit-chowdhury-2402860-6786973.jpg'),
+      title: 'Timeless Traditions',
+      subtitle: 'Discover the finest collection of handcrafted Indian sarees, woven with tradition and modern luxury.',
+      fontFamily: "'Playfair Display', serif",
+      btnText: 'Shop Sarees'
+    },
+    {
       type: 'video',
       src: getAssetUrl('/assets/hero-media/L1.mp4'),
       poster: getAssetUrl('/assets/hero-media/l1_poster.png'),
@@ -18,14 +26,6 @@ const Home = ({ addToCart }) => {
       subtitle: 'Experience the flow of pure silk in motion. Crafted for the modern muse.',
       fontFamily: "'Cinzel', serif",
       btnText: 'Watch Collection'
-    },
-    {
-      type: 'image',
-      src: getAssetUrl('/assets/hero-media/pexels-amit-chowdhury-2402860-6786973.jpg'),
-      title: 'Timeless Traditions',
-      subtitle: 'Discover the finest collection of handcrafted Indian sarees, woven with tradition and modern luxury.',
-      fontFamily: "'Playfair Display', serif",
-      btnText: 'Shop Sarees'
     },
     {
       type: 'video',
@@ -57,6 +57,29 @@ const Home = ({ addToCart }) => {
   const [currentHero, setCurrentHero] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
 
+  // Background Prefetcher for heavy video assets
+  useEffect(() => {
+    const prefetchTimer = setTimeout(() => {
+      const videosToPrefetch = [
+        getAssetUrl('/assets/hero-media/L1.mp4'),
+        getAssetUrl('/assets/hero-media/L2.mp4')
+      ];
+
+      videosToPrefetch.forEach(videoUrl => {
+        // Prevent duplicate link tag injections
+        if (!document.querySelector(`link[href="${videoUrl}"]`)) {
+          const link = document.createElement('link');
+          link.rel = 'prefetch';
+          link.href = videoUrl;
+          link.as = 'video';
+          document.head.appendChild(link);
+        }
+      });
+    }, 2500); // Run background prefetch 2.5 seconds after page is fully interactive
+
+    return () => clearTimeout(prefetchTimer);
+  }, []);
+
   const nextSlide = useCallback(() => {
     setCurrentHero((prev) => (prev + 1) % heroSlides.length);
   }, [heroSlides.length]);
@@ -76,17 +99,15 @@ const Home = ({ addToCart }) => {
 
     if (Math.abs(difference) > swipeThreshold) {
       if (difference > 0) {
-        // Swiped left, show next slide
         nextSlide();
       } else {
-        // Swiped right, show previous slide
         prevSlide();
       }
     }
   };
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 7000); // 7 seconds for all media
+    const timer = setInterval(nextSlide, 7000); 
     return () => clearInterval(timer);
   }, [nextSlide, currentHero]);
 

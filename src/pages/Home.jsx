@@ -143,7 +143,6 @@ const Home = ({ addToCart }) => {
                   loop
                   playsInline 
                   preload="auto"
-                  poster={slide.poster}
                   className="hero-media" 
                 >
                   Your browser does not support the video tag.
